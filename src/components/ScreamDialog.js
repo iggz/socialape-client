@@ -20,11 +20,24 @@ import UnfoldMore from "@material-ui/icons/UnfoldMore";
 import { connect } from "react-redux";
 import { getScream } from "../redux/actions/dataActions";
 
-const styles = theme => ({
+const styles = (theme) => ({
 	...theme,
 	invisibleSeparator: {
 		border: "none",
 		margin: 4
+	},
+	profileImage: {
+		maxWidth: 200,
+		height: 200,
+		borderRadius: "50%",
+		objectFit: "cover"
+	},
+	DialogContent: {
+		padding: 20
+	},
+	closeButton: {
+		position: "absolute",
+		left: "90%"
 	}
 });
 
@@ -57,13 +70,9 @@ class ScreamDialog extends Component {
 		const dialogMarkup = loading ? (
 			<CircularProgress size={200} />
 		) : (
-			<Grid container spacing={16}>
+			<Grid container spacing={9}>
 				<Grid item sm={5}>
-					<img
-						src={userImage}
-						alt="Profile"
-						className={classes.profileImage}
-					/>
+					<img src={userImage} alt="Profile" className={classes.profileImage} />
 				</Grid>
 				<Grid item sm={7}>
 					<Typography
@@ -87,7 +96,7 @@ class ScreamDialog extends Component {
 		return (
 			<Fragment>
 				<MyButton
-					onClick={this.handlOpen}
+					onClick={this.handleOpen}
 					tip="Expand scream"
 					tipClassName={classes.expandButton}
 				>
@@ -123,7 +132,7 @@ ScreamDialog.propTypes = {
 	UI: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
 	scream: state.data.scream,
 	UI: state.UI
 });
