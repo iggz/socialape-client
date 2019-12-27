@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 
 // MUI Stuff
 import Button from "@material-ui/core/Button";
@@ -15,9 +15,9 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import CloseIcon from "@material-ui/icons/Close";
 // Redux stuff
 import { connect } from "react-redux";
-import { postScream } from "../redux/actions/dataActions";
+import { postScream } from "../../redux/actions/dataActions";
 
-const styles = theme => ({
+const styles = (theme) => ({
 	...theme,
 	submitButton: {
 		position: "relative"
@@ -56,10 +56,10 @@ class PostScream extends Component {
 	handleClose = () => {
 		this.setState({ open: false, errors: {} });
 	};
-	handleChange = event => {
+	handleChange = (event) => {
 		this.setState({ [event.target.name]: event.target.value });
 	};
-	handleSubmit = event => {
+	handleSubmit = (event) => {
 		event.preventDefault();
 		this.props.postScream({ body: this.state.body });
 	};
@@ -131,7 +131,7 @@ PostScream.propTypes = {
 	UI: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
 	UI: state.UI
 });
 
