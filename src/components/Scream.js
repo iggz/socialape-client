@@ -6,6 +6,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import PropTypes from "prop-types";
 import MyButton from "../util/MyButton";
 import DeleteScream from "./DeleteScream";
+import ScreamDialog from "./ScreamDialog";
 // MUI Stuff
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -39,7 +40,7 @@ class Scream extends Component {
 		if (
 			this.props.user.likes &&
 			this.props.user.likes.find(
-				(like) => like.screamId === this.props.scream.screamId
+				like => like.screamId === this.props.scream.screamId
 			)
 		)
 			return true;
@@ -115,6 +116,7 @@ class Scream extends Component {
 						<ChatIcon color="primary" />
 					</MyButton>
 					<span>{commentCount} comments</span>
+					<ScreamDialog screamId={screamId} userHandle={userHandle} />
 				</CardContent>
 			</Card>
 		);
@@ -129,7 +131,7 @@ Scream.propTypes = {
 	classes: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
 	user: state.user
 });
 

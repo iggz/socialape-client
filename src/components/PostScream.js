@@ -11,13 +11,13 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import AddIcon from "@material-ui/icons/Add";
+// import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
 // Redux stuff
 import { connect } from "react-redux";
 import { postScream } from "../redux/actions/dataActions";
 
-const styles = (theme) => ({
+const styles = theme => ({
 	...theme,
 	submitButton: {
 		position: "relative"
@@ -56,10 +56,10 @@ class PostScream extends Component {
 	handleClose = () => {
 		this.setState({ open: false, errors: {} });
 	};
-	handleChange = (event) => {
+	handleChange = event => {
 		this.setState({ [event.target.name]: event.target.value });
 	};
-	handleSubmit = (event) => {
+	handleSubmit = event => {
 		event.preventDefault();
 		this.props.postScream({ body: this.state.body });
 	};
@@ -72,7 +72,7 @@ class PostScream extends Component {
 		return (
 			<Fragment>
 				<MyButton onClick={this.handleOpen} tip="Post a Scream!">
-					<AddIcon />
+					{/* <AddIcon /> */}
 				</MyButton>
 				<Dialog
 					open={this.state.open}
@@ -131,7 +131,7 @@ PostScream.propTypes = {
 	UI: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
 	UI: state.UI
 });
 
