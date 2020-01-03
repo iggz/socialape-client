@@ -2,6 +2,8 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import MyButton from "../../util/MyButton";
+import CommentForm from "./CommentForm";
+import Comments from "./Comments";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 
@@ -12,7 +14,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import LikeButton from "./LikeButton";
-import Comments from "./Comments";
 // Icons
 import CloseIcon from "@material-ui/icons/Close";
 import UnfoldMore from "@material-ui/icons/UnfoldMore";
@@ -80,7 +81,7 @@ class ScreamDialog extends Component {
 				<CircularProgress size={200} thickness={2} />
 			</div>
 		) : (
-			<Grid container spacing={9}>
+			<Grid container spacing={8}>
 				<Grid item sm={5}>
 					<img src={userImage} alt="Profile" className={classes.profileImage} />
 				</Grid>
@@ -106,7 +107,8 @@ class ScreamDialog extends Component {
 					</MyButton>
 					<span>{commentCount} comments</span>
 				</Grid>
-				<hr classname={classes.invisibleSeparator} />
+				<hr className={classes.invisibleSeparator} />
+				<CommentForm screamId={screamId} />
 				<Comments comments={comments} />
 			</Grid>
 		);
